@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--共有的css样式表-->
+		<link rel="stylesheet" type="text/css" href="css/head.css"/>
+		<link rel="stylesheet" type="text/css" href="css/walk.css"/>
+		<script src="js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="head_daohang">
+			<div class="head_inner">
+				<a href="#"><img class="head_logo" src="img/logo_116x36.png" /></a>
+				<div class="head_title">
+					<ul class="head">
+						<li class="head_list">
+							<a href="#">目的地</a>
+						</li>
+						<li class="head_list">
+							<a href="#">锦囊</a>
+						</li>
+						<li class="head_list">
+							<a href="#">行程助手</a>
+						</li>
+						<li class="head_list">
+							<a href="#">社区<img src="img/jt.jpg" alt="" /></a>
+						</li>
+						<li class="head_list">
+							<a href="" style="color: #10b041;">最世界·自由行</a>
+						</li>
+						<li class="head_list">
+							<a href="#">机票</a>
+						</li>
+						<li class="head_list">
+							<a href="#">酒店</a>
+						</li>
+						<li class="head_list">
+							<a href="#">预订<img src="img/jt.jpg" alt="" /></a>
+						</li>
+					</ul>
+				</div>
+				<div class="head_nav_login">
+					<div class="head_sreach">
+						<input type="text" name="headSreach" id="headSreach" value="" />
+						<button class="head_glass"></button>
+					</div>
+					<div class="head_login">
+						<a href="#" class="login"><i class="icon_qq"></i></a>
+						<a href="#" class="login"><i class="icon_sina"></i></a>
+						<a href="#" class="login"><i class="icon_weixin"></i></a>
+						<a href="#" class="login">注册</a>
+						<a href="#" class="login">登录</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--头部搜索-->
+		<div class="logo_sreach">
+			<div class="logo_nav">
+				<div class="sreach_nav">
+					<p class="logo"><a href="./最世界.html">
+							<img src="img/head-logo.png" alt="" style="height: 118px;height: 34px;"/>
+						</a>
+					</p>
+					<div class="input_div"><img src="img/sreach.png"/><input type="text" name="logo_input" id="logo_input" value="" placeholder="搜索国家、城市、产品"/></div>
+					<div class="hot_sreach" style="display: none;">
+				<div id="hot_nav">
+					<ul class="hot_ul">
+						<li><a href="#"><em>日本</em><span>热门搜索</span></a></li>
+						<li><a href="#"><em>清迈</em><span>热门搜索</span></a></li>
+						<li><a href="#"><em>海岛</em><span>热门搜索</span></a></li>
+						<li><a href="#"><em>法国</em><span>热门搜索</span></a></li>
+						<li><a href="#"><em>台湾</em><span>热门搜索</span></a></li>
+						<li><a href="#"><em>韩国</em><span>热门搜索</span></a></li>
+					</ul>
+				</div>
+			</div>
+					<div class="like">
+						<a href=""><img src="img/like01.png" alt="" /><span>我的订单</span></a>
+						<a href=""><img src="img/like02.png" alt="" /><span>我的收藏</span></a>
+					</div>
+				</div>
+			</div>
+			<div class="big_title">
+				<ul>
+					<li><a href="#">热门目的地<img class="big_title_img" src="img/xia.png" alt="" /></a></li>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">机酒自由行</a></li>
+					<li><a href="#">城市玩乐<img class="wanletag" src="img/wanletag.gif"/><i></i></a></li>
+					<li><a href="#">签证</a></li>
+					<li><a href="#">租车</a></li>
+					<li><a href="#">邮轮</a></li>
+					<li><a href="#">海岛游</a></li>
+					<li><a href="#">限时特卖</a></li>
+					<li><a href="#">特色线路</a></li>
+					<li><a href="CityWalk.html">CityWalk</a></li>
+				</ul>
+			</div>
+			<!--侧边导航-->
+			<div class="side_bars" style="display: none;">
+				<i class="jiao"></i>
+				<i class="small_jiao"></i>
+				<ul class="side_list">
+					<li>
+						<span><img src="img/home_27.868131868132px_1200646_easyicon.net.png"/></span>
+						<h2 class="list_h2">港澳台 国内</h2>
+						<p class="list_p"><a href="#">香港</a> <a href="#">澳门</a> <a href="#">台湾</a> <a href="#">三亚</a> <a href="#">长白山</a></p>
+						<p class="list_xian"> > </p>
+					</li>
+					<li>
+						<span><img src="img/home_27.868131868132px_1200646_easyicon.net.png"/></span>
+						<h2 class="list_h2">日本 韩国</h2>
+						<p class="list_p"><a href="#">东京</a> <a href="#">大阪</a> <a href="#">冲绳</a><a href="#">首尔</a> <a href="#">济州岛</a></p>
+						<p class="list_xian"> > </p>
+					</li>
+					<li>
+						<span><img src="img/home_27.868131868132px_1200646_easyicon.net.png"/></span>
+						<h2 class="list_h2">东南亚 南亚</h2>
+						<p class="list_p"><a href="#">普吉</a> <a href="#">清迈</a> <a href="#">沙巴</a> <a href="#">巴厘岛</a> <a href="#">马尔代夫</a></p>
+						<p class="list_xian"> > </p>
+					</li>
+					<li>
+						<span><img src="img/home_27.868131868132px_1200646_easyicon.net.png"/></span>
+						<h2 class="list_h2">欧洲 美洲</h2>
+						<p class="list_p"><a href="#">法国</a> <a href="#">意大利</a> <a href="#">美国</a> <a href="#">英国</a></p>
+						<p class="list_xian"> > </p>
+					</li>
+					<li>
+						<span><img src="img/home_27.868131868132px_1200646_easyicon.net.png"/></span>
+						<h2 class="list_h2">澳洲 中东非</h2>
+						<p class="list_p"><a href="#">悉尼</a> <a href="#">新西兰</a> <a href="#">迪拜</a> <a href="#">帕劳</a></p>
+						<p class="list_xian"> > </p>
+					</li>
+					<li>
+						<img src="img/header-hot-bg.jpg"/>
+					</li>
+				</ul>
+				<div class="side_content">
+					<div class="side_content_list" style="display: none;">
+						<div class="content-1">
+							<h2>香港  澳门</h2>
+							<hr />
+							<ul>
+								<li>
+									<a href="#">香港</a>
+									<a href="#">澳门</a>
+								</li>
+								<li>
+									<a href="#" class="font">香港迪士尼</a>
+									<a href="#">昂坪360</a>
+									<a href="#" class="font">交通接驳</a>
+									<a href="#">太平山缆车</a>
+								</li>
+								<li>
+									<a href="" class="font">海洋公园</a>
+									<a href="">天际100</a>
+									<a href="">维港游船</a>
+									<a href="">一日游</a>
+								</li>
+								<li>
+									<a href="" class="font">水舞间</a>
+									<a href="">澳门塔</a>
+									<a href="">摩天轮</a>
+									<a href="" class="font">新濠影汇</a>
+									<a href="">港澳船票</a>
+								</li>
+								<li>
+									<a href="" class="font">豪华自助</a>
+									<a href="" class="font">极限运动</a>
+								</li>
+							</ul>
+						</div>
+						<div class="content-1">
+							<h2>香港  澳门</h2>
+							<hr />
+							<ul>
+								<li>
+									<a href="#">香港</a>
+									<a href="#">澳门</a>
+								</li>
+								<li>
+									<a href="#" class="font">香港迪士尼</a>
+									<a href="#">昂坪360</a>
+									<a href="#" class="font">交通接驳</a>
+									<a href="#">太平山缆车</a>
+								</li>
+								<li>
+									<a href="" class="font">海洋公园</a>
+									<a href="">天际100</a>
+									<a href="">维港游船</a>
+									<a href="">一日游</a>
+								</li>
+								<li>
+									<a href="" class="font">水舞间</a>
+									<a href="">澳门塔</a>
+									<a href="">摩天轮</a>
+									<a href="" class="font">新濠影汇</a>
+									<a href="">港澳船票</a>
+								</li>
+								<li>
+									<a href="" class="font">豪华自助</a>
+									<a href="" class="font">极限运动</a>
+								</li>
+							</ul>
+						</div>
+						<div class="content-1">
+							<h2>国内</h2>
+							<hr />
+							<ul>
+								<li>
+									<a href="#">三亚</a>
+									<a href="#">厦门</a>
+									<a href="#">丽江</a>
+									<a href="#">西安</a>
+								</li>
+								<li>
+									<a href="#" class="font">香港迪士尼</a>
+									<a href="#">昂坪360</a>
+									<a href="#">交通接驳</a>
+									<a href="#">太平山缆车</a>
+								</li>
+								<li>
+									<a href="">海洋公园</a>
+									<a href="">天际100</a>
+									<a href="">维港游船</a>
+									<a href="">一日游</a>
+								</li>
+								<li>
+									<a href="" class="font">水舞间</a>
+									<a href="">澳门塔</a>
+									<a href="">摩天轮</a>
+									<a href="">新濠影汇</a>
+									<a href="" class="font">港澳船票</a>
+								</li>
+							</ul>
+						</div>
+						<div class="content-1">
+							<img src="img/14610331962638.jpg"/>
+						</div>
+					</div>
+					<div class="side_content_list" style="display: none;">
+						<div class="content-1">
+							<h2>国内</h2>
+							<hr />
+							<ul>
+								<li>
+									<a href="#">三亚</a>
+									<a href="#">厦门</a>
+									<a href="#">丽江</a>
+									<a href="#">西安</a>
+								</li>
+								<li>
+									<a href="#" class="font">香港迪士尼</a>
+									<a href="#">昂坪360</a>
+									<a href="#">交通接驳</a>
+									<a href="#">太平山缆车</a>
+								</li>
+								<li>
+									<a href="">海洋公园</a>
+									<a href="">天际100</a>
+									<a href="">维港游船</a>
+									<a href="">一日游</a>
+								</li>
+								<li>
+									<a href="" class="font">水舞间</a>
+									<a href="">澳门塔</a>
+									<a href="">摩天轮</a>
+									<a href="">新濠影汇</a>
+									<a href="" class="font">港澳船票</a>
+								</li>
+							</ul>
+							<img src="img/14610331962638.jpg"/>
+						</div>
+					</div>
+					<div class="side_content_list" style="display: none;">
+						<div class="content-1">
+							<h2>香港  澳门</h2>
+							<hr />
+							<ul>
+								<li>
+									<a href="#">香港</a>
+									<a href="#">澳门</a>
+								</li>
+								<li>
+									<a href="#" class="font">香港迪士尼</a>
+									<a href="#">昂坪360</a>
+									<a href="#" class="font">交通接驳</a>
+									<a href="#">太平山缆车</a>
+								</li>
+								<li>
+									<a href="" class="font">海洋公园</a>
+									<a href="">天际100</a>
+									<a href="">维港游船</a>
+									<a href="">一日游</a>
+								</li>
+								<li>
+									<a href="" class="font">水舞间</a>
+									<a href="">澳门塔</a>
+									<a href="">摩天轮</a>
+									<a href="" class="font">新濠影汇</a>
+									<a href="">港澳船票</a>
+								</li>
+								<li>
+									<a href="" class="font">豪华自助</a>
+									<a href="" class="font">极限运动</a>
+								</li>
+							</ul>
+						</div>
+						<div class="content-1">
+							<h2>国内</h2>
+							<hr />
+							<ul>
+								<li>
+									<a href="#">三亚</a>
+									<a href="#">厦门</a>
+									<a href="#">丽江</a>
+									<a href="#">西安</a>
+								</li>
+								<li>
+									<a href="#" class="font">香港迪士尼</a>
+									<a href="#">昂坪360</a>
+									<a href="#">交通接驳</a>
+									<a href="#">太平山缆车</a>
+								</li>
+								<li>
+									<a href="">海洋公园</a>
+									<a href="">天际100</a>
+									<a href="">维港游船</a>
+									<a href="">一日游</a>
+								</li>
+								<li>
+									<a href="" class="font">水舞间</a>
+									<a href="">澳门塔</a>
+									<a href="">摩天轮</a>
+									<a href="">新濠影汇</a>
+									<a href="" class="font">港澳船票</a>
+								</li>
+							</ul>
+							<img src="img/14610331962638.jpg"/>
+						</div>
+					</div>
+					<div class="side_content_list" style="display: none;">
+						<div class="content-1">
+							<h2>香港  澳门</h2>
+							<hr />
+							<ul>
+								<li>
+									<a href="#">香港</a>
+									<a href="#">澳门</a>
+								</li>
+								<li>
+									<a href="#" class="font">香港迪士尼</a>
+									<a href="#">昂坪360</a>
+									<a href="#" class="font">交通接驳</a>
+									<a href="#">太平山缆车</a>
+								</li>
+								<li>
+									<a href="" class="font">海洋公园</a>
+									<a href="">天际100</a>
+									<a href="">维港游船</a>
+									<a href="">一日游</a>
+								</li>
+								<li>
+									<a href="" class="font">水舞间</a>
+									<a href="">澳门塔</a>
+									<a href="">摩天轮</a>
+									<a href="" class="font">新濠影汇</a>
+									<a href="">港澳船票</a>
+								</li>
+								<li>
+									<a href="" class="font">豪华自助</a>
+									<a href="" class="font">极限运动</a>
+								</li>
+							</ul>
+						</div>
+						<div class="content-1">
+							<h2>国内</h2>
+							<hr />
+							<ul>
+								<li>
+									<a href="#">三亚</a>
+									<a href="#">厦门</a>
+									<a href="#">丽江</a>
+									<a href="#">西安</a>
+								</li>
+								<li>
+									<a href="#" class="font">香港迪士尼</a>
+									<a href="#">昂坪360</a>
+									<a href="#">交通接驳</a>
+									<a href="#">太平山缆车</a>
+								</li>
+								<li>
+									<a href="">海洋公园</a>
+									<a href="">天际100</a>
+									<a href="">维港游船</a>
+									<a href="">一日游</a>
+								</li>
+								<li>
+									<a href="" class="font">水舞间</a>
+									<a href="">澳门塔</a>
+									<a href="">摩天轮</a>
+									<a href="">新濠影汇</a>
+									<a href="" class="font">港澳船票</a>
+								</li>
+							</ul>
+							<img src="img/14610331962638.jpg"/>
+						</div>
+					</div>
+					<div class="side_content_list" style="display: none;">
+						<div class="content-1">
+							<h2>香港  澳门</h2>
+							<hr />
+							<ul>
+								<li>
+									<a href="#">香港</a>
+									<a href="#">澳门</a>
+								</li>
+								<li>
+									<a href="#" class="font">香港迪士尼</a>
+									<a href="#">昂坪360</a>
+									<a href="#" class="font">交通接驳</a>
+									<a href="#">太平山缆车</a>
+								</li>
+								<li>
+									<a href="" class="font">海洋公园</a>
+									<a href="">天际100</a>
+									<a href="">维港游船</a>
+									<a href="">一日游</a>
+								</li>
+								<li>
+									<a href="" class="font">水舞间</a>
+									<a href="">澳门塔</a>
+									<a href="">摩天轮</a>
+									<a href="" class="font">新濠影汇</a>
+									<a href="">港澳船票</a>
+								</li>
+								<li>
+									<a href="" class="font">豪华自助</a>
+									<a href="" class="font">极限运动</a>
+								</li>
+							</ul>
+						</div>
+						<div class="content-1">
+							<h2>国内</h2>
+							<hr />
+							<ul>
+								<li>
+									<a href="#">三亚</a>
+									<a href="#">厦门</a>
+									<a href="#">丽江</a>
+									<a href="#">西安</a>
+								</li>
+								<li>
+									<a href="#" class="font">香港迪士尼</a>
+									<a href="#">昂坪360</a>
+									<a href="#">交通接驳</a>
+									<a href="#">太平山缆车</a>
+								</li>
+								<li>
+									<a href="">海洋公园</a>
+									<a href="">天际100</a>
+									<a href="">维港游船</a>
+									<a href="">一日游</a>
+								</li>
+								<li>
+									<a href="" class="font">水舞间</a>
+									<a href="">澳门塔</a>
+									<a href="">摩天轮</a>
+									<a href="">新濠影汇</a>
+									<a href="" class="font">港澳船票</a>
+								</li>
+							</ul>
+							<img src="img/14610331962638.jpg"/>
+						</div>
+					</div>
+</div>
+			</div>
+		</div>
+		<!--首屏图-->
+		<div class="beijing_pics">
+			<span></span>
+		</div>
+		<!--选择框模块-->
+		<div class="option">
+			<div class="option_nav">
+				<p>所在城市</p>
+				<ul>
+					<li><a href="#">全部</a></li>
+					<li><a href="#">上海</a></li>
+					<li><a href="#">北京</a></li>
+					<li><a href="#">京都</a></li>
+					<li><a href="#">广州</a></li>
+					<li><a href="#">东京</a></li>
+					<li><a href="#">布拉格</a></li>
+					<li><a href="#">巴塞罗那</a></li>
+					<li><a href="#">纽约</a></li>
+					<li><a href="#">巴黎</a></li>
+					<li><a href="#">汉堡</a></li>
+					<li><a href="#">马德里</a></li>
+					<li><a href="#">米兰</a></li>
+					<li><a href="#">佛罗伦萨</a></li>
+					<li><a href="#">台北</a></li>
+					<li><a href="#">香港</a></li>
+					<li><a href="#">博洛尼亚</a></li>
+					<li><a href="#">伦敦</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--排序模块-->
+		<div class="sort">
+			<p>综合排序</p>
+			<a href="#" class="xiaoliang">销量<img src="img/sub_18.png" alt="" /></a>
+			<input type="checkbox" name="newPin" id="newPin" value=""/><label for="newPin"></label><a href="#" style="margin-left: 0px;">今日新品</a>
+		</div>
+		<!--通用-->
+		<div class="common">
+			<div class="common_nav">
+				<!--<div class="common_div">-->
+					<!--<a href="#"><img src="img/420x280(1).jpg" alt="" /></a>-->
+					<!--<div class="bigcard">-->
+						<!--<span class="timu">京都</span>-->
+						<!--<div class="common_num">-->
+							<!--<span class="num span1">46647</span>-->
+							<!--次浏览-->
+							<!--<span class="num span2">237</span>-->
+							<!--件已售-->
+						<!--</div>-->
+						<!--<h2 class="common_h2"><a href="#" title="【最世界一日游】将军之道—京都绝景之旅（含米其林午餐）仅限10周岁以上参加">【最世界一日游】将军之道—京都绝景之旅（含米其林午餐）仅限10周岁以上参加</a></h2>-->
+						<!--<ul class="common_ul">-->
+							<!--<li><img src="img/xx.png" alt="" />听惊心动魄的日本战国故事</li>-->
+							<!--<li><img src="img/xx.png" alt="" />品米其林餐厅会席料理</li>-->
+							<!--<li><img src="img/xx.png" alt="" />从东山最佳角度俯瞰京都</li>-->
+						<!--</ul>-->
+						<!--<div class="common_price">-->
+							<!--<span class="line">1650元</span>-->
+							<!--<em>868</em>元起-->
+						<!--</div>-->
+						<!--<div class="buy">-->
+							<!--<a href="#">立即预订</a>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="common_div">-->
+					<!--<a href="#"><img src="img/420x280(1).jpg" alt="" /></a>-->
+					<!--<div class="bigcard">-->
+						<!--<span class="timu">京都</span>-->
+						<!--<div class="common_num">-->
+							<!--<span class="num span1">46647</span>-->
+							<!--次浏览-->
+							<!--<span class="num span2">237</span>-->
+							<!--件已售-->
+						<!--</div>-->
+						<!--<h2 class="common_h2"><a href="#" title="【最世界一日游】将军之道—京都绝景之旅（含米其林午餐）仅限10周岁以上参加">【最世界一日游】将军之道—京都绝景之旅（含米其林午餐）仅限10周岁以上参加</a></h2>-->
+						<!--<ul class="common_ul">-->
+							<!--<li><img src="img/xx.png" alt="" />听惊心动魄的日本战国故事</li>-->
+							<!--<li><img src="img/xx.png" alt="" />品米其林餐厅会席料理</li>-->
+							<!--<li><img src="img/xx.png" alt="" />从东山最佳角度俯瞰京都</li>-->
+						<!--</ul>-->
+						<!--<div class="common_price">-->
+							<!--<span class="line">1650元</span>-->
+							<!--<em>868</em>元起-->
+						<!--</div>-->
+						<!--<div class="buy">-->
+							<!--<a href="#">立即预订</a>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="common_div">-->
+					<!--<a href="#"><img src="img/420x280(1).jpg" alt="" /></a>-->
+					<!--<div class="bigcard">-->
+						<!--<span class="timu">京都</span>-->
+						<!--<div class="common_num">-->
+							<!--<span class="num span1">46647</span>-->
+							<!--次浏览-->
+							<!--<span class="num span2">237</span>-->
+							<!--件已售-->
+						<!--</div>-->
+						<!--<h2 class="common_h2"><a href="#" title="【最世界一日游】将军之道—京都绝景之旅（含米其林午餐）仅限10周岁以上参加">【最世界一日游】将军之道—京都绝景之旅（含米其林午餐）仅限10周岁以上参加</a></h2>-->
+						<!--<ul class="common_ul">-->
+							<!--<li><img src="img/xx.png" alt="" />听惊心动魄的日本战国故事</li>-->
+							<!--<li><img src="img/xx.png" alt="" />品米其林餐厅会席料理</li>-->
+							<!--<li><img src="img/xx.png" alt="" />从东山最佳角度俯瞰京都</li>-->
+						<!--</ul>-->
+						<!--<div class="common_price">-->
+							<!--<span class="line">1650元</span>-->
+							<!--<em>868</em>元起-->
+						<!--</div>-->
+						<!--<div class="buy">-->
+							<!--<a href="#">立即预订</a>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="common_div">-->
+					<!--<a href="#"><img src="img/420x280(1).jpg" alt="" /></a>-->
+					<!--<div class="bigcard">-->
+						<!--<span class="timu">京都</span>-->
+						<!--<div class="common_num">-->
+							<!--<span class="num span1">46647</span>-->
+							<!--次浏览-->
+							<!--<span class="num span2">237</span>-->
+							<!--件已售-->
+						<!--</div>-->
+						<!--<h2 class="common_h2"><a href="#" title="【最世界一日游】将军之道—京都绝景之旅（含米其林午餐）仅限10周岁以上参加">【最世界一日游】将军之道—京都绝景之旅（含米其林午餐）仅限10周岁以上参加</a></h2>-->
+						<!--<ul class="common_ul">-->
+							<!--<li><img src="img/xx.png" alt="" />听惊心动魄的日本战国故事</li>-->
+							<!--<li><img src="img/xx.png" alt="" />品米其林餐厅会席料理</li>-->
+							<!--<li><img src="img/xx.png" alt="" />从东山最佳角度俯瞰京都</li>-->
+						<!--</ul>-->
+						<!--<div class="common_price">-->
+							<!--<span class="line">1650元</span>-->
+							<!--<em>868</em>元起-->
+						<!--</div>-->
+						<!--<div class="buy">-->
+							<!--<a href="#">立即预订</a>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			</div>
+		</div>
+		<!--翻页模块-->
+		<div class="pass">
+			<div class="pages">
+				<a href="#">1</a>
+				<a href="#">2</a>
+				<a href="#">下一页</a>
+			</div>
+		</div>
+		<!--公共尾部-->		
+		<div class="foot">
+			<ul class="foot_ul_1">
+				<li><a href="">机酒自由行</a><span>|</span></li>
+				<li><a href="">城市玩乐</a><span>|</span></li>
+				<li><a href="">签证</a><span>|</span></li>
+				<li><a href="">租车</a><span>|</span></li>
+				<li><a href="">邮轮</a><span>|</span></li>
+				<li><a href="">海岛游</a><span>|</span></li>
+				<li><a href="">限时特卖</a><span>|</span></li>
+				<li><a href="">特色线路</a><span>|</span></li>
+				<li><a href="">CityWalk</a></li>
+			</ul>
+			<ul class="foor_ul_2">
+				<li>
+					<p class="foot_p_tu p1"></p>
+					<h3 class="foot_title">专业保证</h3>
+					<p class="foot_p">我们收集穷游er的真实诉求，也找寻全世界最独特的旅行目的地，让更多的穷游er轻松出行</p>
+				</li>
+				<li>
+					<p class="foot_p_tu p2"></p>
+					<h3 class="foot_title">多重审核</h3>
+					<p class="foot_p">对旅游产品提供商严格筛选，资质认证层层把关，为穷游er精选细选最值得信赖的旅行产品</p>
+				</li>
+				<li>
+					<p class="foot_p_tu p3"></p>
+					<h3 class="foot_title">安心陪护</h3>
+					<p class="foot_p">对所有穷游er的购买进行跟踪服务以及质量监控，有效投诉先行赔付，出现任何问题负责到底</p>
+				</li>
+			</ul>
+		</div>
+		<!--版权-->
+		<div class="banquan">
+			<div class="banquan_nav">
+				<div class="foot_logo">
+					<p class="foot_pics"></p>
+					<p class="banquan_p">最世界·自由行————从一张机票、一家酒店的订购，到一次暖心的接机服务、一张轻松融入当地的交通卡，让我们带你探索这个世界</p>
+				</div>
+				<div class="guanzhu">
+					<p class="guanzhu_zi">关注我们</p>
+					<p class="gz_pic i1"></p>
+					<p class="gz_pic i2"></p>
+					<p class="gz_pic i3"></p>
+					<p class="gz_pic i4"></p>	
+				</div>
+				<!--手机二维码-->
+				<div class="shouji">
+					<div class="phone">
+						<p class="code_tu tu01"></p>
+						<div class="zi">
+							<p class="sao">扫一扫下载</p><br />
+							<p class="world">穷游最世界</p><br />
+							<p class="big_zi">APP</p>
+						</div>
+					</div>
+					<i class="phone_bottom"></i>
+				</div>
+				<!--微信二维码-->
+				<div class="weixin">
+					<div class="phone">
+						<p class="code_tu tu02"></p>
+						<div class="zi">
+							<p class="sao">扫一扫关注</p><br />
+							<p class="world">穷游最世界</p><br />
+							<p class="big_zi">微信</p>
+						</div>
+					</div>
+					<i class="phone_bottom bot01"></i>
+				</div>
+				<!--微博-->
+				<div class="weibo">
+					<div class="sina">
+						<span class="sina_guanzhu">+ 关注</span>
+						<a href="#">@最世界自由行</a>
+					</div>
+					<i class="phone_bottom bot02"></i>
+				</div>
+				<!--信箱-->
+				<div class="xinxiang">
+					<div class="email">
+						<input type="text" name="email" id="email" value="" placeholder="请输入Email"/><button>订阅</button>
+						<i class="phone_bottom bot03"></i>
+					</div>
+				</div>
+				<div class="banquan_div">
+					<a href="#">关于最世界·自由行</a><span>|</span>
+					<a href="#">服务与隐私</a><span>|</span>
+					<a href="#">联系我们</a><span>|</span>
+					<a href="#">旅游度假资质</a><span>|</span>
+					<a href="#">营业执照</a><span>|</span>
+					<a href="#">投诉建议</a><span>|</span>
+					<p class="banquan_zi">2004-2016 © 穷游网™ qyer.com All rights reserved. Version v5.57 京ICP备12003524号 京公网安备11010502023470 京ICP证140673号</p>
+					<p class="lianjie_p">友情链接：
+						<a href="#">美国旅游</a>
+						<a href="#">房车租赁</a>
+						<a href="#">旅行工具</a>
+						<a href="#">美规车网</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!--底部fixed-->
+		<div class="last_big">
+			<div class="last_nav">
+				<div class="last_div">
+					<a href="#"><img src="img/big_img.png" alt="" /></a>
+				</div>
+				<div class="last_login">
+					<input type="button" name="sina" id="sina" value="" />
+					<input type="button" name="QQ" id="QQ" value="" />
+					<span class="last_zi">
+						<a href="#">登录</a>或
+					</span>
+					<input type="button" name="zhuce" id="zhuce" value="" />
+				</div>
+			</div>
+			<div class="close"></div>
+		</div>
+		<!--右侧固定菜单栏-->
+		<div class="menu_right">
+			<a href="#" class="dingdan">
+				<b class="dingdan_b"><img src="img/right-01.png"/></b>
+				<div id="right-01_zi">
+					<p>
+						<span>我的</span><br />
+						<span>订单</span>
+					</p>
+				</div>
+			</a>
+			<a href="#" class="shoucang">
+				<b class="shoucang_b"><img src="img/right-02.png"/></b>
+				<div id="right-02_zi">
+					<p>
+						<span>我的</span><br />
+						<span>收藏</span>
+					</p>
+				</div>
+			</a>
+			<div id="top">
+				<b><img class="top" src="img/top.png"/></b>
+			</div>
+		</div>
+	</body>
+	<script src="js/walk.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/head.js" type="text/javascript" charset="utf-8"></script>
+</html>
