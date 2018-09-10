@@ -1,0 +1,204 @@
+通过接口表调用标准表，
+ERP
+
+
+
+
+cux_om_lines_1001_v
+
+大概工作范围:
+
+了解技术的实现掌握--技术
+功能业务层面
+
+表架构
+流程
+
+通用化 粗
+系统支持 定制专用化 细
+----
+1.改名：8位字符 CUXPOVDR
+2.画布
+3.窗口
+4.数据块
+
+窗口：改标题
+画布：堆叠画布 CANBAS_STACKED
+注意子类的选择
+1.建表和视图 把rowid拿出来 记得给别名row_id
+在后面记得修改row_id属性:ROW_ID：子类信息选择ROW_ID,唯一标识（三个属性：名称，最大长度18，子类属性）
+
+2.双击窗口：修改标题
+3三个属性：标题，子类属性
+
+
+
+4.先新建画布：FOLDER_FIXED  子类属性：CANVAS_STACKED_DIXED_FIELD
+画布：MAIN  大画布   1
+自定义FOLDER_FIXED  --包含FOLDER_STK和滚动条和光标指示条  2 
+FOLDER_STK 放数据的画布 -- 堆叠在FOLDER_FIXED  3
+有层次结构
+
+FOLDER_STK 子类属性:CANVAS_STACKED
+
+5.数据源 
+数据块向导-》表或视图-》选择全部属性
+在FOLDER的字段选择FOLDER_STK画布
+在FOLDER_STK的字段也选择FOLDER_STK画布，可初始化列名：初始值
+
+
+7.FOLDER:把需要字段组合在一起拖到上面，修改子类属性为TEXT_ITEM属性，滚动条属性 选择显示滚动条：是，带滚动条画布：FOLDER_FIXED
+
+8.FOLDER_PROMPT:把需要提示的字段放进FOLDER_PROMPT
+修改Y轴，修改子类属性FOLDER_PROMPT_Mu，删除F1字段，不需要选择画布
+
+9.修改触发器
+app_folder.define_folder_block(object_name        => 'CUXPOVDR21084',
+                               folder_block_name  => 'FOLDER',
+                               prompt_block_name  => 'FOLDER_PROMPT',
+                               folder_canvas_name => 'FOLDER_STK',
+                               folder_window_name => 'MAIN',
+                               disabled_functions => '',
+                               tab_canvas_name    => '',
+                               fixed_canvas_name  => 'FOLDER_FIXED');
+app_folder.event('INSTANTIATE');
+
+10.FTP：
+把模板放进
+/u01/dev121/apps/apps_st/appl/cux/12.0.0/forms/ZHS
+
+
+11.Putty
+命令行
+先cd $AU_TOP/forms/ZHS
+
+再编译
+frmcmp_batch userid=apps/apps module=/u01/dev121/apps/apps_st/appl/cux/12.0.0/forms/ZHS/CUXINVMC21080.fmb output_file=/u01/dev121/apps/apps_st/appl/cux/12.0.0/forms/ZHS/CUXINVMC21080.fmx
+---
+frmcmp_batch userid=apps/apps module=/u01/dev121/apps/apps_st/appl/cux/12.0.0/forms/ZHS/CUXOMORD21080.fmb output_file=/u01/dev121/apps/apps_st/appl/cux/12.0.0/forms/ZHS/CUXOMORD21080.fmx
+
+
+12.IE
+http://gzdc01.haasgz.hand-china.com:30000/OA_HTML/
+到应用开发员
+注册表单
+注册功能 说明 特性 。。
+菜单
+统一放到CUX_TRAIN_XXXX
+用户菜单不需要再创建
+
+3、创建这样一个菜单
+应用开发员->应用产品
+（1）表单：表单（表单的标识 CUXPOVDR21084），应用（），用户表单名（外部展示的表单名）
+（2）功能：说明，特性，表单（选择上面创建的外部展示表单名）
+（3）菜单：（可以包含多个功能）菜单名，用户菜单名，
+序号，提示，功能（选择刚才建立的功能）
+
+（4）先自定义一个菜单
+将菜单挂在CUX_TRN_MENU培训菜单下
+
+------------------
+1.增加增删改功能：
+自动生成
+BEGIN
+  hand_plsql_autocreate.form_view_iud(p_block_name  =>'FOLDER',
+                                      p_table_name  =>'CUX_PO_VENDORS_21080',
+                                      p_owner       =>'CUX',
+                                      p_primary_key =>'VENDOR_ID');
+END;
+复制内容
+程序说明，添加包头包体
+触发器：ON-INSERT ON-LOCK ON-UPDATE ON-DELETE
+在编辑器添加，例如：FOLDER_PRIVATE.insert_row;
+
+2.增加日期
+日期字段：值列表：ENABLE_LISE_LAMP
+从列表中验证：否
+添加触发器：KEY-LISTVAL
+编辑：calendar.show;
+3.添加值列表
+（1）在值列表LOV右键选择LOV向导（sql，LOV窗口标题，列标题，宽度）
+      SELECT cpc.contact_name,
+       cpc.contact_number,
+       cpc.contact_id
+FROM cux_po_contacts cpc
+
+LOV窗口高度6000，宽度4000
+列宽度，设置为0相当于隐藏该列
+（2）将值列表分配给对应的FOLDER数据
+4.检验数据
+插入之前校验
+触发器：PRE-INSERT
+IF：
+end if；
+去应用开发员找错误信息代码
+用when-calidate-item更好
+
+5.调整画布
+把FOLDER_PROMPT除数据的属性归在FLODER_FIXED画布下
+在MAIN窗口才可以用堆叠画布查看
+调整物理的和视图的宽高和Y轴位置
+
+6.查找
+选取需要的字段给QUERY数据块
+
+把需要展示的字段子类属性设置好，画布选择MAIN，调整好位置
+日期不需要从列表中验证
+
+新建LOV，赋值
+给LOV属性
+
+模糊查询
+app_folder.event('PRE-QUERY');
+IF :parameter.g_query_find = 'TRUE' THEN
+  
+  :folder.vendor_id  := :query.vendor_id;
+  :folder.contact_id := :query.contact_id;
+  :folder.telephone  := '%'||:query.telephone||'%';---这里
+  app_find.query_date_range(:query.start_date_active_from,
+                            :query.start_date_active_to,
+                            'FOLDER.START_DATE_ACTIVE');
+END IF;
+
+QUERY数据块下：
+按钮：子类属性BUTTON
+触发器：when button press
+添加相关的代码
+清除内容：app_find.clear;
+查询：:parameter.g_query_find := 'TRUE';
+app_find.find('FOLDER');
+:parameter.g_query_find := 'FALSE';
+
+folder数据块:
+pre-query:
+IF :parameter.g_query_find = 'TRUE' THEN
+  
+  :folder.vendor_id  := :query.vendor_id;
+  :folder.contact_id := :query.contact_id;
+  :folder.telephone  := :query.telephone;
+  app_find.query_date_range(:query.start_date_active_from,
+                            :query.start_date_active_to,
+                            'FOLDER.START_DATE_ACTIVE');
+END IF;
+
+清除相关内容：
+app_field.clear_dependent_fields('QUERY.CONTACT_NUMBER'
+                                 ,'QUERY.CONTACT_NAME'
+                                 ,'QUERY.CONTACT_ID');
+
+设置日历：
+calendar.show;
+设置属性
+一块的属性：set_item_property 有INsten一粒
+整块的属性：set_block_property
+一行的属性：set_record_property
+
+
+环境信息
+haasgz.hand-china.com
+账号：appl121
+密码：appl121hand201
+
+
+plsql
+F6 提示

@@ -1,0 +1,144 @@
+账户别名导出报表_bkp20180730
+
+快速编码：
+  fnd_lookup_types;
+  fnd_lookup_values;
+值集：
+ fnd_flex_value_sets;
+ fnd_flex_values;
+
+
+
+日期格式：to_char(pha.creation_date, 'yyyy-mm-dd hh24:mi:ss') 
+
+--------
+
+SELECT pha.segment1 AS segment1,
+       to_char(pha.creation_date, 'yyyy-mm-dd hh24:mi:ss') AS creation_date,
+       (SELECT SUM(nvl(pla.unit_price, 0) * nvl(pla.quantity, 0))
+          FROM po_lines_all pla
+         WHERE pla.po_header_id = pha.po_header_id) AS amount
+  FROM po_headers_all pha
+ WHERE pha.type_lookup_code <> 'BLANKET'
+   AND (pha.segment1 in (:p_po_num) OR least(:p_po_num) IS NULL)
+
+--判断有效时间
+    SELECT COUNT(1)
+      INTO l_customer_flag
+      FROM cux_om_customers_21080 coc
+     WHERE coc.customer_id = g_om_headers_rec.customer_id
+       AND trunc(SYSDATE) BETWEEN coc.start_date_active AND nvl(coc.end_date_active,trunc(SYSDATE));
+---库存组织同步DM
+SELECT ion.organization_code AS 组织代码,
+       ion.organization_name AS 组织名称,
+       ion.business_unit_name AS 业务单位,
+       to_char(fab.creation_date,
+               'yyyy-mm-dd hh24:mi:ss') AS 创建日期,
+       to_char(fab.last_update_date,
+               'yyyy-mm-dd hh24:mi:ss') AS 最后更新日期,
+       ion2.organization_code AS 物料主组织,
+       fab.status AS 状态,
+       hrl.location_name AS 地点,
+       hrl.address_line_1 AS 详细地址,
+       to_char(:p_update_date,
+               'yyyy-mm-dd hh24:mi:ss') update_date,
+       to_char(:p_endupdate_date,
+               'yyyy-mm-dd hh24:mi:ss') endupdate_date
+  FROM hr_locations                   hrl,
+       fun_all_business_units_v       fab,
+       inv_organization_definitions_v ion,
+       inv_organization_definitions_v ion2
+ WHERE fab.bu_id = ion.business_unit_id
+   AND ion.master_organization_id = ion2.organization_id
+   AND hrl.location_id = ion.location_id
+   AND (fab.last_update_date>=:p_update_date or :p_update_date is null)---比用BETWEEN好
+   AND (fab.last_update_date<=:p_endupdate_date or :p_endupdate_date is null)
+--------特制方法复制一行数据
+DECLARE
+cux_om_headers_rec cux_om_headers_21080%ROWTYPE;
+BEGIN
+  select *
+  into cux_om_headers_rec
+  from cux_om_headers_21080 coh
+  where coh.header_id=10001;
+  cux_om_headers_rec.header_id:=10050;
+  cux_om_headers_rec.order_number:=100000232;
+CUX_OM_HEADERS_21080_PKG.insert_row(cux_om_headers_rec);
+END;
+---------复制一行数据
+------------------快速复制一行数据
+INSERT INTO cux_om_headers_21080
+  SELECT cux_om_headers_21080_s.nextval,
+         org_id,
+         1000003434,
+         customer_id,
+         order_date,
+         order_status,
+         description,
+         created_by,
+         creation_date,
+         last_updated_by,
+         last_update_date,
+         last_update_login,
+         attribute_category,
+         attribute1,
+         attribute2,
+         attribute3,
+         attribute4,
+         attribute5,
+         attribute6,
+         attribute7,
+         attribute8,
+         attribute9,
+         attribute10,
+         attribute11,
+         attribute12,
+         attribute13,
+         attribute14,
+         attribute15
+    FROM cux_om_headers_21080 coh
+   WHERE coh.header_id = 10001;
+
+-----------
+8.SELECT c.customer_number,
+       c.customer_name,
+       c.telephone,
+       c.start_date_active,
+       c.end_date_active
+  FROM cux_om_customers_21080 c,
+       cux_om_headers_21080   h
+ WHERE c.customer_id = h.customer_id
+   AND h.order_status LIKE 'CANCELLED'--用子查询，不用去重
+-----
+   SELECT distinct c.customer_number,
+       c.customer_name,
+       c.telephone,
+       c.start_date_active,
+       c.end_date_active
+  FROM cux_om_customers_21080 c,
+       cux_om_headers_21080   h
+ WHERE c.customer_id = h.customer_id
+   AND h.order_status LIKE 'CANCELLED';-----编程逻辑有问题，建议不使用distinct,可转换成其他方式去重、控制
+--In的用法
+SELECT c.customer_number,
+       c.customer_name,
+       c.telephone,
+       c.start_date_active,
+       c.end_date_active
+  FROM cux_om_customers_21080 c
+ WHERE  c.customer_id in (SELECT coh.customer_id
+          FROM cux_om_headers_21080 coh
+         WHERE coh.order_status = 'CANCELLED');
+ ---exist用法
+ SELECT c.customer_number,
+        c.customer_name,
+        c.telephone,
+        c.start_date_active,
+        c.end_date_active
+   FROM cux_om_customers_21080 c
+  WHERE EXISTS (SELECT coh.customer_id
+           FROM cux_om_headers_21080 coh
+          WHERE coh.order_status = 'CANCELLED'
+            AND coh.customer_id = c.customer_id);
+   ---------
+
